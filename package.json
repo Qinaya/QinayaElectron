@@ -5,6 +5,8 @@
   "description": "Tu computador en la nube.",
   "author": "Daniel <daniel@qinaya.co>",
   "license": "Private License",
+  "vendor": "Qinaya",
+  "category": "Office",
   "private": true,
   "keywords": [
     "electron",
