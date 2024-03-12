@@ -38,8 +38,16 @@
   },
   "linux": {
     "target": [
-      "AppImage"
+      "AppImage",
+      "deb",
+      "tar.gz",
+      "snap", 
     ],
+    "snap": {
+    "confinement": "strict",
+    "grade": "stable",
+    "plugs": ["default", "camera", "microphone"]
+  }
     "artifactName": "${productName}-Linux-${version}.${ext}"
   }
 }
