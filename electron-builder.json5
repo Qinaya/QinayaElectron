@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
   "appId": "co.qinaya.cloudpro",
   "asar": true,
-  "productName": "QinayaClodPro",
+  "productName": "QinayaCloudPro",
   "directories": {
     "output": "release/${version}"
   },
@@ -17,6 +17,7 @@
     "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
   },
   "win": {
+    "icon": "./public/qinaya.png",
     "target": [
       {
         "target": "nsis",
