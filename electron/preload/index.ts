@@ -3,7 +3,6 @@ import { ipcRenderer, contextBridge } from 'electron'
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', withPrototype(ipcRenderer))
 
-// `exposeInMainWorld` can't detect attributes and methods of `prototype`, manually patching it.
 function withPrototype(obj: Record<string, any>) {
   const protos = Object.getPrototypeOf(obj)
 
@@ -11,7 +10,6 @@ function withPrototype(obj: Record<string, any>) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) continue
 
     if (typeof value === 'function') {
-      // Some native APIs, like `NodeJS.EventEmitter['on']`, don't work in the Renderer process. Wrapping them into a function.
       obj[key] = function (...args: any) {
         return value.call(obj, ...args)
       }
@@ -22,7 +20,6 @@ function withPrototype(obj: Record<string, any>) {
   return obj
 }
 
-// --------- Preload scripts loading ---------
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise((resolve) => {
     if (condition.includes(document.readyState)) {
@@ -40,22 +37,16 @@ function domReady(condition: DocumentReadyState[] = ['complete', 'interactive'])
 const safeDOM = {
   append(parent: HTMLElement, child: HTMLElement) {
     if (!Array.from(parent.children).find(e => e === child)) {
-      return parent.appendChild(child)
+      parent.appendChild(child)
     }
   },
   remove(parent: HTMLElement, child: HTMLElement) {
     if (Array.from(parent.children).find(e => e === child)) {
-      return parent.removeChild(child)
+      parent.removeChild(child)
     }
   },
 }
 
-/**
- * https://tobiasahlin.com/spinkit
- * https://connoratherton.com/loaders
- * https://projects.lukehaas.me/css-loaders
- * https://matejkustec.github.io/SpinThatShit
- */
 function useLoading() {
   const className = `loaders-css__square-spin`
   const styleContent = `
@@ -69,7 +60,8 @@ function useLoading() {
   animation-fill-mode: both;
   width: 50px;
   height: 50px;
-  background: #fff;
+  background: url('logo.svg') no-repeat center center;
+  background-size: contain;
   animation: square-spin 3s 0s cubic-bezier(0.09, 0.57, 0.49, 0.9) infinite;
 }
 .app-loading-wrap {
@@ -91,7 +83,8 @@ function useLoading() {
   oStyle.id = 'app-loading-style'
   oStyle.innerHTML = styleContent
   oDiv.className = 'app-loading-wrap'
-  oDiv.innerHTML = `<div class="${className}"><div></div></div>`
+  // Changed to use an `img` tag for the logo.
+  oDiv.innerHTML = `<div class="${className}"><img src="https://app.qinaya.co/logo.svg" alt="Loading..." /></div>`
 
   return {
     appendLoading() {
@@ -104,8 +97,6 @@ function useLoading() {
     },
   }
 }
-
-// ----------------------------------------------------------------------
 
 const { appendLoading, removeLoading } = useLoading()
 domReady().then(appendLoading)
