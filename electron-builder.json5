@@ -10,37 +10,10 @@
     "dist",
     "dist-electron"
   ],
-  "mac": {
-    "target": [
-      "dmg"
-    ],
-    "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
-  },
-  "win": {
-    "icon": "./public/qinaya.png",
-    "target": [
-      {
-        "target": "nsis",
-        "arch": [
-          "x64"
-        ]
-      }
-    ],
-    "artifactName": "${productName}-Windows-${version}-Setup.${ext}"
-  },
-  "nsis": {
-    "oneClick": false,
-    "perMachine": false,
-    "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false
-  },
   "linux": {
     "target": [
-      "AppImage",
-      "deb",
       "tar.gz",
-      "snap",
-    ],
+],
   
     "artifactName": "${productName}-Linux-${version}.${ext}"
   }
