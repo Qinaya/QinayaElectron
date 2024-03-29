@@ -35,7 +35,10 @@ const createWindow = () => {
   // Directly load app.qinaya.co
   const appURL = 'https://app.qinaya.co';
   win.loadURL(appURL);
+  win.webContents.session.clearStorageData({
+    storages: ['appcache', 'cookies', 'filesystem', 'indexdb', 'localstorage']
 
+  });
   // Make all links open with the browser, not with the application
   win.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith('https:')) shell.openExternal(url);
