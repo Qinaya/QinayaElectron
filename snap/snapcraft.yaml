@@ -11,10 +11,7 @@ apps:
   qinayacloudpro:
     command: qinayacloudpro
     plugs:
-      - desktop
-      - desktop-legacy
-      - x11
-      - wayland
+      - ubuntu-frame
 
 parts:
   qinayacloudpro:

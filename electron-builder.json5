@@ -47,6 +47,7 @@
   "publish": [
     {
       "provider": "snapStore",
+      "repo": "QinayaCloudPro",	
       "channels": ["stable"], // Can be a string or array of strings
       "publishAutoUpdate": true,
       "timeout": 120000, // Request timeout in milliseconds
