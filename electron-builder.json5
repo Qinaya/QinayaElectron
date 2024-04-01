@@ -14,7 +14,15 @@
     "target": [
       "dmg"
     ],
-    "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
+    "artifactName": "${productName}-Mac-${version}-Installer.${ext}",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Qinaya",
+        "repo": "QinayaElectron",
+        "releaseType": "release"
+      }
+    ]
   },
   "win": {
     "icon": "./public/qinaya.png",
@@ -26,37 +34,49 @@
         ]
       }
     ],
-    "artifactName": "${productName}-Windows-${version}-Setup.${ext}"
-  },
-  "nsis": {
-    "oneClick": false,
-    "perMachine": false,
-    "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false
+    "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Qinaya",
+        "repo": "QinayaElectron",
+        "releaseType": "release"
+      }
+    ]
   },
   "linux": {
     "target": [
       "AppImage",
       "deb",
       "tar.gz",
-      "snap",
-      
+      {
+        "target": "snap",
+        // Specify any snap-specific configuration here as needed
+      }
     ],
-    "artifactName": "${productName}-Linux-${version}.${ext}"
-  },
-  "publish": [
-    {
-      "provider": "snapStore",
+    "artifactName": "${productName}-Linux-${version}.${ext}",
+    "publish": [
+      // This will apply to all Linux formats except for those specified otherwise
+      {
+        "provider": "github",
+        "owner": "Qinaya",
+        "repo": "QinayaElectron",
+        "releaseType": "release"
+      },
+      // Snap specific publish configuration
+      {
+       "provider": "snapStore",
       "repo": "QinayaCloudPro",	
       "channels": ["stable"], // Can be a string or array of strings
       "publishAutoUpdate": true,
       "timeout": 120000, // Request timeout in milliseconds
-    },
-    {
-      "provider": "github",
-      "owner": "Qinaya", // Replace with your GitHub username or organization
-      "repo": "QinayaElectron", // Replace with your repository name
-      "releaseType": "release", // Or "release" for published releases
-    }
-  ]
+      }
+    ]
+  },
+  // Global publish settings are omitted to avoid conflicts
 }
+
+
+
+
+     
