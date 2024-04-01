@@ -56,7 +56,7 @@
         // Specify any snap-specific configuration here as needed
       }
     ],
-    "artifactName": "${productName}-Linux-${version}.${ext}",
+    "artifactName": "${productName}-Linux-${version}-${arch}.${ext}",
     "publish": [
       // This will apply to all Linux formats except for those specified otherwise
       {
