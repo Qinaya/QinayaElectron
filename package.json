@@ -24,7 +24,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && electron-builder --publish always",
-    "snapcraft": "vue-tsc --noEmit && vite build && electron-builder -l snap",
+    "snapcraft": "vue-tsc --noEmit && vite build && electron-builder -l tar.gz",
     "preview": "vite preview"
   },
   "devDependencies": {
