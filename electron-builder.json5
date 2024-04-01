@@ -45,40 +45,36 @@
     ]
   },
   "linux": {
-    "icon": "./public/qinaya.png", 
+    "icon": "./public/qinaya.png",
     "category": "Internet",
     "target": [
       "AppImage",
       "deb",
       "tar.gz",
       {
-        "target": "snap",
-        // Specify any snap-specific configuration here as needed
+        "target": "snap"
       }
     ],
     "artifactName": "${productName}-Linux-${version}-${arch}.${ext}",
     "publish": [
-      // This will apply to all Linux formats except for those specified otherwise
+      // This will apply to all Linux formats for GitHub publishing
       {
         "provider": "github",
         "owner": "Qinaya",
         "repo": "QinayaElectron",
         "releaseType": "release"
       },
-      // Snap specific publish configuration
+      // Snap specific publish configuration for Snap Store
       {
-       "provider": "snapStore",
-      "repo": "QinayaCloudPro",	
-      "channels": ["stable"], // Can be a string or array of strings
-      "publishAutoUpdate": true,
-      "timeout": 120000, // Request timeout in milliseconds
+        "provider": "snapStore",
+        "repo": "QinayaCloudPro",  
+        "channels": ["stable"],
+        "publishAutoUpdate": true,
+        "timeout": 120000
       }
     ]
-  },
-  // Global publish settings are omitted to avoid conflicts
+  }
 }
-
-
 
 
      
