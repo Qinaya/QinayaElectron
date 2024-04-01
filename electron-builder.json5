@@ -11,7 +11,7 @@
     "dist-electron"
   ],
   "mac": {
-   "icon": "build/icon.icns"
+   "icon": "./build/icon.icns"
 
     "target": [
       "dmg"
