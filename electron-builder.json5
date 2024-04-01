@@ -45,6 +45,8 @@
     ]
   },
   "linux": {
+    "icon": "./public/qinaya.png", 
+    "category": "Internet",
     "target": [
       "AppImage",
       "deb",
