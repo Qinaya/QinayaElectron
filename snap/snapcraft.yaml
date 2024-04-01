@@ -24,4 +24,3 @@ parts:
       snapcraftctl build
     build-packages:
       - electron-builder
-    after: [desktop-legacy]
