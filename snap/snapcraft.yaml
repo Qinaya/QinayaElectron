@@ -1,26 +1,35 @@
 name: qinayacloudpro
-version: '1.0.2'
+version: '1.0.3'
 summary: Qinaya Cloud Pro
 description: |
   Qinaya Cloud Pro
 
-grade: stable
+base: core22
 confinement: strict
+grade: stable
+
 
 apps:
   qinayacloudpro:
     command: qinayacloudpro
     plugs:
       - ubuntu-frame
+      - browser-support
+      - network
+      - network-bind
 
 parts:
   qinayacloudpro:
     plugin: nil
-    stage-packages:
-      - libnss3
-      - libxss1
     source: .
-    override-build: |
-      snapcraftctl build
+     override-build: |
+        npm install electron @electron/packager
+        npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
+        cp -rv ./electron-quick-start-linux-* $SNAPCRAFT_PART_INSTALL/electron-quick-start
+    build-snaps:
+    - node/14/stable
     build-packages:
-      - electron-builder
+    - unzip
+    stage-packages:
+    - libnss3
+    - libnspr4
