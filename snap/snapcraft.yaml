@@ -12,7 +12,11 @@ compression: lzo
 
 apps:
   qinayacloudpro:
-    command: qinayacloudpro
+    command: qinayacloudpro --no-sandbox
+    extensions: [gnome]
+    environment:
+      TMPDIR: ${XDG_RUNTIME_DIR}
+      PATH: ${SNAP}/bin:${PATH}
     plugs:
       - ubuntu-frame
       - browser-support
