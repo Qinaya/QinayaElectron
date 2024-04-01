@@ -10,11 +10,54 @@
     "dist",
     "dist-electron"
   ],
-  "linux": {
+  "mac": {
     "target": [
+      "dmg"
+    ],
+    "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
+  },
+  "win": {
+      "publish": ["github"],
+
+    "icon": "./public/qinaya.png",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "${productName}-Windows-${version}-Setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": true
+  },
+  "linux": {
+  "publish": ["github"],
+	
+    "target": [
+      "AppImage",
+      "deb",
       "tar.gz",
-],
+ {
+        "target": "snap",
+        "confinement": "strict",
+        "grade": "stable",
+      }
+    ],
   
     "artifactName": "${productName}-Linux-${version}.${ext}"
   }
+publish": [
+    {
+      "provider": "snapStore",
+      "channels": ["edge"], // Can be a string or array of strings
+      "publishAutoUpdate": true, // Whether to publish auto-update info files
+      "timeout": 120000, // Request timeout in milliseconds
+    }
+  ],
 }
