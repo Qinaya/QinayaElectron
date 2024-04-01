@@ -29,7 +29,7 @@ parts:
     source: .
     override-build: |
         npm install
-        npm run snapcraft --scripts-prepend-node-path="/snap/bin/node"
+        npm run snapcraft
     build-snaps:
     - node/20/stable
     build-packages:
