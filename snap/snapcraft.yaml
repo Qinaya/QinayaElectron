@@ -22,6 +22,8 @@ apps:
       - browser-support
       - network
       - network-bind
+      - password-manager-service
+      - audio-playback
 
 parts:
   qinayacloudpro:
@@ -30,6 +32,8 @@ parts:
     override-build: |
         npm install
         npm run snapcraft --scripts-prepend-node-path
+        mkdir ${CRAFT_PART_INSTALL}/opt -p
+        cp -r dist/*unpacked ${CRAFT_PART_INSTALL}/opt/qinayacloudpro
     build-snaps:
     - node/20/stable
     build-packages:
