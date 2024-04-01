@@ -17,8 +17,6 @@
     "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
   },
   "win": {
-      "publish": ["github"],
-
     "icon": "./public/qinaya.png",
     "target": [
       {
@@ -34,30 +32,30 @@
     "oneClick": false,
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": true
+    "deleteAppDataOnUninstall": false
   },
   "linux": {
-  "publish": ["github"],
-	
     "target": [
       "AppImage",
       "deb",
       "tar.gz",
- {
-        "target": "snap",
-        "confinement": "strict",
-        "grade": "stable",
-      }
+      "snap",
+      
     ],
-  
     "artifactName": "${productName}-Linux-${version}.${ext}"
-  }
-publish": [
+  },
+  "publish": [
     {
       "provider": "snapStore",
-      "channels": ["edge"], // Can be a string or array of strings
-      "publishAutoUpdate": true, // Whether to publish auto-update info files
+      "channels": ["stable"], // Can be a string or array of strings
+      "publishAutoUpdate": true,
       "timeout": 120000, // Request timeout in milliseconds
+    },
+    {
+      "provider": "github",
+      "owner": "Qinaya", // Replace with your GitHub username or organization
+      "repo": "QinayaElectron", // Replace with your repository name
+      "releaseType": "release", // Or "release" for published releases
     }
-  ],
+  ]
 }
