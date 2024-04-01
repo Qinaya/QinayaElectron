@@ -22,7 +22,7 @@ parts:
   qinayacloudpro:
     plugin: nil
     source: .
-     override-build: |
+    override-build: |
         npm install electron @electron/packager
         npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
         cp -rv ./electron-quick-start-linux-* $SNAPCRAFT_PART_INSTALL/electron-quick-start
