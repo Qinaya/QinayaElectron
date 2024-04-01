@@ -23,9 +23,8 @@ parts:
     plugin: nil
     source: .
     override-build: |
-        npm install electron @electron/packager
-        npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
-        cp -rv ./electron-quick-start-linux-* $SNAPCRAFT_PART_INSTALL/electron-quick-start
+        npm install
+        npm run snapcraft
     build-snaps:
     - node/20/stable
     build-packages:
