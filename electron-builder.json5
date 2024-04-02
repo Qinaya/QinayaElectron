@@ -30,12 +30,13 @@
   "icon": "./public/iconl.ico",
   "publisherName": ["Qinaya"],
   "target": [{
-    "target": "nsis"
+      "target": "nsis",
+    },
+    {
+      "target": "zip",
+    
   }],
-    "target": [{
-    "target": "zip"
-  }],
-  "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
+  "artifactName": "${productName}-Windows-${version}.${ext}",
   "publish": [{
     "provider": "github",
     "owner": "Qinaya",
@@ -73,7 +74,7 @@
     },
     {
       "target": "snap",
-      "arch": ["x64", "armv7l"]
+      "arch": ["x64", "armv7l", "arm64"]
     }
   ],
   "artifactName": "${productName}-Linux-${version}-${arch}.${ext}",
