@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "main": "dist-electron/main/index.js",
   "description": "Tu computador en la nube.",
-  "author": "Daniel <daniel@qinaya.co>",
+  "author": "Qinaya <daniel@qinaya.co>",
   "license": "Private License",
   "vendor": "Qinaya",
   "category": "Office",

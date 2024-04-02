@@ -28,7 +28,7 @@
   },
 "win": {
   "icon": "./public/iconl.ico",
-  "publisherName": ["Qinaya S.A.S"],
+  "publisherName": ["Qinaya"],
   "target": [{
     "target": "nsis",
     "arch": ["x64"]
@@ -45,14 +45,13 @@
   "oneClick": false,
   "perMachine": true,
   "allowElevation": true,
-  "installerIcon": "./public/icon.ico",
-  "uninstallerIcon": "./public/icon.ico",
-  "installerHeaderIcon": "./public/icon.ico",
+  "installerIcon": "./public/iconl.ico",
+  "uninstallerIcon": "./public/iconl.ico",
+  "installerHeaderIcon": "./public/iconl.ico",
   "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
   "deleteAppDataOnUninstall": true,
   "createDesktopShortcut": "always",
-  "menuCategory": "Qinaya - Qinaya Cloud Pro",
-  // Define other NSIS specific options here as needed
+  "menuCategory": "Qinaya",
 },
 "linux": {
   "icon": "./public/qinaya.png",
