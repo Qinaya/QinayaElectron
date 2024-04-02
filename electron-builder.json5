@@ -80,6 +80,7 @@
       "provider": "github",
       "owner": "Qinaya",
       "repo": "QinayaElectron",
+      "publishAutoUpdate": true,
       "releaseType": "release"
     },
     {
