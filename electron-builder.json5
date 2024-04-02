@@ -26,57 +26,74 @@
       }
     ]
   },
-  "win": {
-    "icon": "./public/qinaya.png",
-    "target": [
-      {
-        "target": "nsis",
-        "arch": [
-          "x64"
-        ]
-      }
-    ],
-    "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "Qinaya",
-        "repo": "QinayaElectron",
-        "releaseType": "release"
-      }
-    ]
-  },
-  "linux": {
-    "icon": "./public/qinaya.png",
-    "category": "Internet",
-    "target": [
-      "AppImage",
-      "deb",
-      "tar.gz",
-      {
-        "target": "snap"
-      }
-    ],
-    "artifactName": "${productName}-Linux-${version}-${arch}.${ext}",
-    "publish": [
-      // This will apply to all Linux formats for GitHub publishing
-      {
-        "provider": "github",
-        "owner": "Qinaya",
-        "repo": "QinayaElectron",
-        "releaseType": "release"
-      },
-      // Snap specific publish configuration for Snap Store
-      {
-        "provider": "snapStore",
-        "repo": "QinayaCloudPro",  
-        "channels": ["stable"],
-        "publishAutoUpdate": true,
-        "timeout": 120000
-      }
-    ]
-  }
+"win": {
+  "icon": "./public/qinaya.png",
+  "publisherName": ["Qinaya S.A.S"],
+  "target": [{
+    "target": "nsis",
+    "arch": ["x64"]
+  }],
+  "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
+  "publish": [{
+    "provider": "github",
+    "owner": "Qinaya",
+    "repo": "QinayaElectron",
+    "releaseType": "release"
+  }]
+},
+"nsis": {
+  "oneClick": false,
+  "perMachine": true,
+  "allowElevation": true,
+  "installerIcon": "./public/Qinaya.ico",
+  "uninstallerIcon": "./public/Qinaya.ico",
+  "installerHeaderIcon": "./public/Qinaya.ico",
+  "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
+  "deleteAppDataOnUninstall": true,
+  "createDesktopShortcut": "always",
+  "menuCategory": "Qinaya - Qinaya Cloud Pro",
+  // Define other NSIS specific options here as needed
+},
+"linux": {
+  "icon": "./public/qinaya.png",
+  "category": "Internet",
+  "target": [
+    {
+      "target": "AppImage",
+      "arch": ["x64", "armv7l", "arm64"]
+    },
+    {
+      "target": "deb",
+      "arch": ["x64", "armv7l", "arm64"]
+    },
+    {
+      "target": "tar.gz",
+      "arch": ["x64", "armv7l", "arm64"]
+    },
+    {
+      "target": "snap"
+    }
+  ],
+  "artifactName": "${productName}-Linux-${version}-${arch}.${ext}",
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "Qinaya",
+      "repo": "QinayaElectron",
+      "releaseType": "release"
+    },
+    {
+      "provider": "snapStore",
+      "repo": "QinayaCloudPro",
+      "channels": ["stable"],
+      "publishAutoUpdate": true,
+      "timeout": 120000
+    }
+  ]
 }
+
+  }
+
 
 
      
