@@ -27,7 +27,7 @@
     ]
   },
 "win": {
-  "icon": "./public/qinaya.png",
+  "icon": "./public/iconl.ico",
   "publisherName": ["Qinaya S.A.S"],
   "target": [{
     "target": "nsis",
