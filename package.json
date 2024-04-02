@@ -23,13 +23,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && electron-builder",
+    "build": "vue-tsc --noEmit && vite build && electron-builder -w",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.1",
-    "electron": "^29.1.1",
-    "electron-builder": "^24.9.1",
+    "electron": "^29.1.6",
+    "electron-builder": "^24.13.3",
     "tree-kill": "^1.2.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",

@@ -31,7 +31,6 @@
   "publisherName": ["Qinaya"],
   "target": [{
     "target": "nsis",
-    "arch": ["x64"]
   }],
   "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
   "publish": [{
