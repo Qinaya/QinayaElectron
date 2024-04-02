@@ -30,7 +30,10 @@
   "icon": "./public/iconl.ico",
   "publisherName": ["Qinaya"],
   "target": [{
-    "target": "nsis",
+    "target": "nsis"
+  }],
+    "target": [{
+    "target": "zip"
   }],
   "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
   "publish": [{
@@ -69,7 +72,8 @@
       "arch": ["x64", "armv7l", "arm64"]
     },
     {
-      "target": "snap"
+      "target": "snap",
+      "arch": ["x64", "armv7l"]
     }
   ],
   "artifactName": "${productName}-Linux-${version}-${arch}.${ext}",

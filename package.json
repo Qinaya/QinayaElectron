@@ -24,6 +24,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && electron-builder -wl --publish always",
+    "buildarm64": "vue-tsc --noEmit && vite build && electron-builder -l snap --arm64 --x64 --armv7l --publish always",
     "preview": "vite preview"
   },
   "devDependencies": {
