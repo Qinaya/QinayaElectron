@@ -11,7 +11,7 @@
     "dist-electron"
   ],
   "mac": {
-  "icon": "./build/icon.icns",
+  "icon": "./public/icon.icns",
 
     "target": [
       "dmg"
@@ -45,9 +45,9 @@
   "oneClick": false,
   "perMachine": true,
   "allowElevation": true,
-  "installerIcon": "./public/Qinaya.ico",
-  "uninstallerIcon": "./public/Qinaya.ico",
-  "installerHeaderIcon": "./public/Qinaya.ico",
+  "installerIcon": "./public/icon.ico",
+  "uninstallerIcon": "./public/icon.ico",
+  "installerHeaderIcon": "./public/icon.ico",
   "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
   "deleteAppDataOnUninstall": true,
   "createDesktopShortcut": "always",
