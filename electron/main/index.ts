@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, powerMonitor } from 'electron';
 import { release } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -33,7 +33,7 @@ const createWindow = () => {
   });
 
   // Directly load app.qinaya.co
-  const appURL = 'https://app.qinaya.co';
+  const appURL = 'https://xapp.qinaya.co';
   win.loadURL(appURL);
   win.webContents.session.clearStorageData({
     storages: ['appcache', 'cookies', 'filesystem', 'indexdb', 'localstorage']
@@ -45,6 +45,18 @@ const createWindow = () => {
     return { action: 'deny' };
   });
 };
+
+app.on('ready', () => {
+  powerMonitor.on('suspend', () => {
+    console.log('System suspended');
+    app.relaunch()
+    app.exit()
+  })
+  powerMonitor.on('resume', () => {
+    console.log('System resumed');
+    //createWindow();
+  })
+});
 
 app.whenReady().then(createWindow);
 
@@ -74,5 +86,4 @@ ipcMain.handle('open-win', (_, arg) => {
     },
   });
 
- 
 });
