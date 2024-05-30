@@ -36,8 +36,7 @@ const createWindow = () => {
   const appURL = 'https://xapp.qinaya.co';
   win.loadURL(appURL);
   win.webContents.session.clearStorageData({
-    storages: ['appcache', 'cookies', 'filesystem', 'indexdb', 'localstorage']
-
+    storages: ['appcache', 'cookies', 'filesystem', 'indexdb']
   });
   // Make all links open with the browser, not with the application
   win.webContents.setWindowOpenHandler(({ url }) => {
