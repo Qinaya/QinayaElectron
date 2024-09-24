@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell, ipcMain, powerMonitor } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, powerMonitor, screen } from 'electron';
 import { release } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,9 +23,12 @@ let win = null;
 const preload = join(__dirname, '../preload/index.mjs');
 
 const createWindow = () => {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   win = new BrowserWindow({
-    fullscreen: true, // Make the window fill the whole screen
+    width, // Set the window width to the screen width
+    height, // Set the window height to the screen height
     frame: false, // Remove window decorations, including the menu bar
+    fullscreen: true,
     webPreferences: {
       preload,
       webSecurity: false, // Disable webSecurity to disable CORS
@@ -36,7 +39,7 @@ const createWindow = () => {
   const appURL = 'https://xapp.qinaya.co';
   win.loadURL(appURL);
   win.webContents.session.clearStorageData({
-    storages: ['appcache', 'cookies', 'filesystem', 'indexdb']
+    storages: ['appcache', 'cachestorage']
   });
   // Make all links open with the browser, not with the application
   win.webContents.setWindowOpenHandler(({ url }) => {
@@ -53,7 +56,8 @@ app.on('ready', () => {
   })
   powerMonitor.on('resume', () => {
     console.log('System resumed');
-    //createWindow();
+    app.relaunch()
+    app.exit()
   })
 });
 

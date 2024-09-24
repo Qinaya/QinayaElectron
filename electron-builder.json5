@@ -71,29 +71,9 @@
     {
       "target": "tar.gz",
       "arch": ["x64", "armv7l", "arm64"]
-    },
-    {
-      "target": "snap",
-      "arch": ["x64", "armv7l", "arm64"]
     }
   ],
   "artifactName": "${productName}-Linux-${version}-${arch}.${ext}",
-  "publish": [
-    {
-      "provider": "github",
-      "owner": "Qinaya",
-      "repo": "QinayaElectron",
-      "publishAutoUpdate": true,
-      "releaseType": "release"
-    },
-    {
-      "provider": "snapStore",
-      "repo": "QinayaCloudPro",
-      "channels": ["stable"],
-      "publishAutoUpdate": true,
-      "timeout": 120000
-    }
-  ]
 }
 
   }
