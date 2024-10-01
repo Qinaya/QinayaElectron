@@ -1,4 +1,4 @@
-import { app, powerSaveBlocker, BrowserWindow, shell, ipcMain, powerMonitor, screen } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, powerMonitor, powerSaveBlocker, screen } from 'electron';
 import { release } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,9 +46,6 @@ const createWindow = () => {
     return { action: 'deny' };
   });
 };
-// Adding powerSaveBlocker to prevent app suspension
-//const id = powerSaveBlocker.start('prevent-app-suspension');
-//console.log('PowerSaveBlocker is started:', powerSaveBlocker.isStarted(id));
 
 // TCP Ping functionality
 async function ping(options: { host: string, port: number, timeout?: number }) {
@@ -114,7 +111,15 @@ function calculateStats(times: number[]) {
     successCount: successTimes.length,
   };
 }
+let blockerId = powerSaveBlocker.start('prevent-display-sleep');
 
+// Later in the code, you can check if the blocker is active
+if (powerSaveBlocker.isStarted(blockerId)) {
+    console.log('Power save blocker is active');
+}
+
+// Stop blocking (when your app no longer needs to prevent sleep)
+powerSaveBlocker.stop(blockerId);
 // Function to run 5 pings every 5 seconds and log stats
 async function runPingTest() {
   const times: number[] = [];
@@ -202,4 +207,5 @@ ipcMain.handle('open-win', (_, arg) => {
     },
   });
 });
+
 

@@ -1,6 +1,6 @@
 {
   "name": "QinayaCloudPro",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "main": "dist-electron/main/index.js",
   "description": "Tu computador en la nube.",
   "author": "Qinaya <daniel@qinaya.co>",
